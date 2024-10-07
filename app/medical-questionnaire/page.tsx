@@ -195,7 +195,7 @@ export default function MedicalQuestionnaireCarousel() {
 
   return (
     <div className="container mx-auto p-4 max-w-2xl">
-      <h1 className="text-3xl font-bold mb-6 text-[#7f00ff] text-center">Questionnaire Médical</h1>
+      <h1 className="text-3xl font-bold mb-6 text-[#7f00ff] text-center">Questionnaire Médica</h1>
       <div className="relative">
         {slides[currentSlide]}
         <div className="mt-6 flex justify-between">
