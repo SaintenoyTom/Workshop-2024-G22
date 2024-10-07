@@ -82,8 +82,8 @@ export default function MedicalQuestionnaireCarousel() {
 
   const slides = [
     // Slide 0: Informations personnelles
-    <div key="personal-info" className="space-y-4">
-      <h2 className="text-2xl font-bold">Informations personnelles</h2>
+    <div key="personal-info" className="space-y-4 bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold text-blue-800">Informations personnelles</h2>
       <div>
         <Label htmlFor="age">Âge</Label>
         <Input id="age" name="age" value={formData.age} onChange={handleInputChange} placeholder="Âge" />
@@ -120,14 +120,15 @@ export default function MedicalQuestionnaireCarousel() {
     </div>,
 
     // Slide 1: Symptômes
-    <div key="symptoms" className="space-y-4">
-      <h2 className="text-2xl font-bold">Symptômes</h2>
+    <div key="symptoms" className="space-y-4 bg-gradient-to-br from-green-100 to-green-200 p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold text-green-800">Symptômes</h2>
       {commonSymptoms.map(symptom => (
         <div key={symptom} className="flex items-center space-x-2">
           <Checkbox
             id={symptom}
             checked={formData.symptoms.includes(symptom)}
             onCheckedChange={() => handleSymptomToggle(symptom)}
+            className="border-green-500 text-green-600"
           />
           <Label htmlFor={symptom}>{symptom}</Label>
         </div>
@@ -138,26 +139,27 @@ export default function MedicalQuestionnaireCarousel() {
           value={formData.customSymptom}
           onChange={(e) => setFormData(prev => ({ ...prev, customSymptom: e.target.value }))}
         />
-        <Button onClick={handleCustomSymptom}>Ajouter</Button>
+        <Button onClick={handleCustomSymptom} className="bg-green-600 hover:bg-green-700 text-white">Ajouter</Button>
       </div>
     </div>,
 
     // Slide 2: Conditions d'utilisation
-    <div key="terms" className="space-y-4">
-      <h2 className="text-2xl font-bold">Conditions d'utilisation</h2>
+    <div key="terms" className="space-y-4 bg-gradient-to-br from-purple-100 to-purple-200 p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold text-purple-800">Conditions d'utilisation</h2>
       <div className="flex items-center space-x-2">
         <Checkbox
           id="terms"
           checked={formData.termsAccepted}
           onCheckedChange={(checked) => setFormData(prev => ({ ...prev, termsAccepted: checked }))}
+          className="border-purple-500 text-purple-600"
         />
         <Label htmlFor="terms">J'accepte les conditions d'utilisation du site</Label>
       </div>
     </div>,
 
     // Slide 3: Diagnostic et recommandations
-    <div key="diagnosis" className="space-y-4">
-      <h2 className="text-2xl font-bold">Diagnostic</h2>
+    <div key="diagnosis" className="space-y-4 bg-gradient-to-br from-orange-100 to-orange-200 p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold text-orange-800">Diagnostic</h2>
       <p className="text-sm text-gray-500">Ce diagnostic est fourni à titre informatif uniquement et ne remplace pas l'avis d'un professionnel de santé.</p>
       <Textarea value={diagnosis} readOnly className="h-40" />
       <h3 className="text-xl font-semibold">Rendez-vous médicaux recommandés</h3>
@@ -192,19 +194,19 @@ export default function MedicalQuestionnaireCarousel() {
 
   return (
     <div className="container mx-auto p-4 max-w-2xl">
-      <h1 className="text-3xl font-bold mb-6">Questionnaire Médical</h1>
+      <h1 className="text-3xl font-bold mb-6 text-primary text-center bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">Questionnaire Médical</h1>
       <div className="relative">
         {slides[currentSlide]}
         <div className="mt-6 flex justify-between">
-          <Button onClick={prevSlide} disabled={currentSlide === 0}>
+          <Button onClick={prevSlide} disabled={currentSlide === 0} variant="outline" className="bg-blue-100 text-blue-700 hover:bg-blue-200 border-blue-300">
             <ChevronLeft className="mr-2 h-4 w-4" /> Précédent
           </Button>
           {currentSlide < slides.length - 1 ? (
-            <Button onClick={nextSlide}>
+            <Button onClick={nextSlide} className="bg-green-500 text-white hover:bg-green-600">
               Suivant <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           ) : (
-            <Button onClick={handleSubmit} disabled={!formData.termsAccepted}>
+            <Button onClick={handleSubmit} disabled={!formData.termsAccepted} className="bg-purple-500 text-white hover:bg-purple-600">
               Soumettre
             </Button>
           )}
