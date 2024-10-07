@@ -120,7 +120,7 @@ export default function MedicalQuestionnaireCarousel() {
     </div>,
 
     // Slide 1: Symptômes
-    <div key="symptoms" className="space-y-4 bg-[#80ff00]/10 p-6 rounded-lg shadow-md">
+    <div key="symptoms" className="space-y-4 bg-[#7f00ff]/10 p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-[#7f00ff]">Symptômes</h2>
       {commonSymptoms.map(symptom => (
         <div key={symptom} className="flex items-center space-x-2">
@@ -159,7 +159,7 @@ export default function MedicalQuestionnaireCarousel() {
     </div>,
 
     // Slide 3: Diagnostic et recommandations
-    <div key="diagnosis" className="space-y-4 bg-[#80ff00]/10 p-6 rounded-lg shadow-md border border-[#7f00ff]/20">
+    <div key="diagnosis" className="space-y-4 bg-[#7f00ff]/10 p-6 rounded-lg shadow-md border border-[#7f00ff]/20">
       <h2 className="text-2xl font-bold text-[#7f00ff]">Diagnostic</h2>
       <p className="text-sm text-[#7f00ff]/80">Ce diagnostic est fourni à titre informatif uniquement et ne remplace pas l'avis d'un professionnel de santé.</p>
       <Textarea value={diagnosis} readOnly className="h-40 bg-white/50 border-[#7f00ff]/50 focus:border-[#7f00ff] text-[#7f00ff]" />
@@ -199,7 +199,7 @@ export default function MedicalQuestionnaireCarousel() {
       <div className="relative">
         {slides[currentSlide]}
         <div className="mt-6 flex justify-between">
-          <Button onClick={prevSlide} disabled={currentSlide === 0} variant="outline" className="bg-[#80ff00]/20 text-[#7f00ff] hover:bg-[#80ff00]/30 border-[#7f00ff]">
+          <Button onClick={prevSlide} disabled={currentSlide === 0} variant="outline" className="bg-[#7f00ff]/20 text-[#7f00ff] hover:bg-[#7f00ff]/30 border-[#7f00ff]">
             <ChevronLeft className="mr-2 h-4 w-4" /> Précédent
           </Button>
           {currentSlide < slides.length - 1 ? (
