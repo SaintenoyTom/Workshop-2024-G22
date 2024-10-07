@@ -158,8 +158,8 @@ export default function MedicalQuestionnaireCarousel() {
     </div>,
 
     // Slide 3: Diagnostic et recommandations
-    <div key="diagnosis" className="space-y-4 bg-gradient-to-br from-orange-100 to-orange-200 p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-orange-800">Diagnostic</h2>
+    <div key="diagnosis" className="space-y-4 bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold text-blue-800">Diagnostic</h2>
       <p className="text-sm text-gray-500">Ce diagnostic est fourni à titre informatif uniquement et ne remplace pas l'avis d'un professionnel de santé.</p>
       <Textarea value={diagnosis} readOnly className="h-40" />
       <h3 className="text-xl font-semibold">Rendez-vous médicaux recommandés</h3>
