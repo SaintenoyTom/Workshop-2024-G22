@@ -24,7 +24,7 @@ export default function MedicalQuestionnaireCarousel() {
   const [diagnosis, setDiagnosis] = useState('')
   const [advice, setAdvice] = useState('')
   const [checkup, setCheckup] = useState('')
-  const [recommendations, setRecommendations] = useState([]) // Ajout de l'état pour recommendations
+  const [recommendations, setRecommendations] = useState([] as string[]) // Ajout de l'état pour recommendations
 
   useEffect(() => {
     const savedData = localStorage.getItem('medicalQuestionnaire')
@@ -148,7 +148,7 @@ export default function MedicalQuestionnaireCarousel() {
 
     // Slide 2: Conditions d'utilisation
     <div key="terms" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-[#4400ff]">Conditions d'utilisation</h2>
+      <h2 className="text-2xl font-bold text-[#4400ff]">Conditions d&apos;utilisation</h2>
       <div className="flex items-center space-x-2">
         <Checkbox
           id="terms"
@@ -165,13 +165,13 @@ export default function MedicalQuestionnaireCarousel() {
       <h2 className="text-2xl font-bold text-[#4400ff]">Diagnostic</h2>
       <p className="text-sm text-[#4400ff]/80">Ce diagnostic est fourni à titre informatif uniquement et ne remplace pas l&apos;avis d&apos;un professionnel de santé.</p>
       <Textarea value={diagnosis} readOnly className="h-40 bg-white/50 border-[#4400ff]/50 focus:border-[#4400ff] text-[#4400ff]" />
-      
+
       <h3 className="text-xl font-semibold text-[#4400ff]">Conseils</h3>
       <p>{advice}</p>
-      
+
       <h3 className="text-xl font-semibold text-[#4400ff]">Bilan de santé</h3>
       <p>{checkup}</p>
-      
+
       <h3 className="text-xl font-semibold text-[#4400ff]">Rendez-vous médicaux recommandés</h3>
       <Table>
         <TableHeader>
@@ -206,23 +206,23 @@ export default function MedicalQuestionnaireCarousel() {
             <ChevronLeft className="mr-2 h-4 w-4" /> Précédent
           </Button>
           {currentSlide < slides.length - 2 ? (
-          <Button onClick={nextSlide} className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80">
-            Suivant <ChevronRight className="ml-2 h-4 w-4" />
-          </Button>
-        ) : currentSlide === slides.length - 2 ? (
-          <Button 
-            onClick={handleSubmit} 
-            disabled={!formData.termsAccepted} 
-            className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80"
-          >
-            Soumettre
-          </Button>
-        ) : (
-          // Ne rien afficher sur la dernière diapositive
-          <div />
-        )}
+            <Button onClick={nextSlide} className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80">
+              Suivant <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+          ) : currentSlide === slides.length - 2 ? (
+            <Button
+              onClick={handleSubmit}
+              disabled={!formData.termsAccepted}
+              className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80"
+            >
+              Soumettre
+            </Button>
+          ) : (
+            // Ne rien afficher sur la dernière diapositive
+            <div />
+          )}
+        </div>
       </div>
     </div>
-  </div>
   )
 }
