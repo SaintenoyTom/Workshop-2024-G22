@@ -24,7 +24,8 @@ export default function MedicalQuestionnaireCarousel() {
   const [diagnosis, setDiagnosis] = useState('')
   const [advice, setAdvice] = useState('')
   const [checkup, setCheckup] = useState('')
-  const [recommendations, setRecommendations] = useState([]) // Ajout de l'état pour recommendations
+  const [ville, setVille] = useState('') 
+  const [recommendations, setRecommendations] = useState([])
 
   useEffect(() => {
     const savedData = localStorage.getItem('medicalQuestionnaire')
@@ -64,11 +65,11 @@ export default function MedicalQuestionnaireCarousel() {
   }
 
   const handleSubmit = async () => {
-    // Simuler l'envoi à ChatGPT et obtenir un diagnostic
-    setDiagnosis("test")
+    setDiagnosis("Vous présentez des symptômes similaires à une grippe. Il est recommandé de consulter un médecin si les symptômes persistent.")
     setAdvice("Vous pouvez prendre deux jours de repos.")
     setCheckup("Il est recommandé d'effectuer un dépistage contre le cancer du sein ainsi qu'une injection du vaccin contre le tétanos.")
-    setRecommendations(["Médecin généraliste", "cardiologue", "Médecin du sport"]) // Ajout de recommandations
+    setRecommendations(["Médecin généraliste", "néurologue", "Médecin du sport"])
+    setVille("paris") // Remplacer par la valeur saisie par l'utilisateur
     setCurrentSlide(currentSlide + 1)
   }
 
@@ -79,6 +80,9 @@ export default function MedicalQuestionnaireCarousel() {
   const prevSlide = () => {
     setCurrentSlide(prev => Math.max(prev - 1, 0))
   }
+
+  const normalizeString = (str: string) => 
+    str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s/g, '-');
 
   const slides = [
     // Slide 0: Informations personnelles
@@ -167,10 +171,11 @@ export default function MedicalQuestionnaireCarousel() {
       <Textarea value={diagnosis} readOnly className="h-40 bg-white/50 border-[#4400ff]/50 focus:border-[#4400ff] text-[#4400ff]" />
       
       <h3 className="text-xl font-semibold text-[#4400ff]">Conseils</h3>
-      <p>{advice}</p>
+      <Textarea value={advice} readOnly className="h-20 bg-white/50 border-[#4400ff]/50 focus:border-[#4400ff] text-[#4400ff]" />
       
       <h3 className="text-xl font-semibold text-[#4400ff]">Bilan de santé</h3>
-      <p>{checkup}</p>
+      <p className="text-sm text-[#4400ff]/80">Ce bilan est fourni à titre informatif uniquement et ne remplace pas l&apos;avis d&apos;un professionnel de santé.</p>
+      <Textarea value={checkup} readOnly className="h-20 bg-white/50 border-[#4400ff]/50 focus:border-[#4400ff] text-[#4400ff]" />
       
       <h3 className="text-xl font-semibold text-[#4400ff]">Rendez-vous médicaux recommandés</h3>
       <Table>
@@ -185,7 +190,11 @@ export default function MedicalQuestionnaireCarousel() {
             <TableRow key={rec}>
               <TableCell className="text-[#4400ff]/80">{rec}</TableCell>
               <TableCell>
-                <a href={`https://www.doctolib.fr/${rec.toLowerCase().replace(/\s/g, '-')}`} target="_blank" rel="noopener noreferrer" className="text-[#4400ff] hover:text-[#4400ff] underline font-medium hover:font-bold px-4 leading-[1.2] tracking-wide hover:tracking-normal transition-all duration-200">
+                <a href={`https://www.doctolib.fr/${normalizeString(rec)}/${normalizeString(ville)}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-[#4400ff] hover:text-[#4400ff] underline font-medium hover:font-bold px-4 leading-[1.2] tracking-wide hover:tracking-normal transition-all duration-200"
+                >
                   Rechercher sur Doctolib
                 </a>
               </TableCell>
@@ -206,23 +215,24 @@ export default function MedicalQuestionnaireCarousel() {
             <ChevronLeft className="mr-2 h-4 w-4" /> Précédent
           </Button>
           {currentSlide < slides.length - 2 ? (
-          <Button onClick={nextSlide} className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80">
-            Suivant <ChevronRight className="ml-2 h-4 w-4" />
-          </Button>
-        ) : currentSlide === slides.length - 2 ? (
-          <Button 
-            onClick={handleSubmit} 
-            disabled={!formData.termsAccepted} 
-            className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80"
-          >
-            Soumettre
-          </Button>
-        ) : (
-          // Ne rien afficher sur la dernière diapositive
-          <div />
-        )}
+            <Button onClick={nextSlide} className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80">
+              Suivant <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+          ) : currentSlide === slides.length - 2 ? (
+            <Button 
+              onClick={handleSubmit} 
+              disabled={!formData.termsAccepted} 
+              className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80"
+            >
+              Soumettre
+            </Button>
+          ) : (
+            // Ne rien afficher sur la dernière diapositive
+            <div />
+          )}
+        </div>
       </div>
     </div>
-  </div>
   )
 }
+
