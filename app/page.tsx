@@ -1,15 +1,16 @@
+'use client'
+
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CardContent, Card } from "@/components/ui/card"
-import { HeartPulse } from 'lucide-react'
 
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen ">
       <main className="flex-1 ">
         <section className="relative w-full py-12 sm:py-16 md:py-24 lg:py-32 xl:py-48">
-          <div className="absolute inset-0 bg-cover bg-center bg-[url('./images/imageC1.jpeg')] blur-sm"></div>
+          <div className="absolute inset-0 bg-cover bg-center bg-[url('/images/imageC1.jpeg')] blur-sm"></div>
           <div className="relative container px-4 sm:px-6 md:px-8">
             <div className="flex flex-col items-center space-y-4 text-center ">
               <div className="space-y-2">
@@ -19,6 +20,7 @@ export default function HomePage() {
                 <p className="mx-auto max-w-[700px] text-[#4400ff]/50 md:text-xl text-base font-bold bg-white border border-gray-300 p-4 shadow-lg">
                   Des conseils médicaux personnalisés pour vous aider à prendre les meilleures décisions pour votre santé.
                 </p>
+
               </div>
               <div>
                 <Button className="text-black bg-[#bbff00]">Obtenir un conseil</Button>
@@ -35,8 +37,8 @@ export default function HomePage() {
             <Card className="max-w-3xl mx-auto">
               <CardContent className="p-6">
                 <p className="text-center text-lg text-[#4400ff]/50 dark:text-gray-300">
-                  Chez Conseil Médical, nous nous concentrons exclusivement sur la fourniture de conseils de santé personnalisés. 
-                  Notre équipe d'experts médicaux est dédiée à vous offrir des recommandations précises et adaptées à votre situation individuelle, 
+                  Chez Conseil Médical, nous nous concentrons exclusivement sur la fourniture de conseils de santé personnalisés.
+                  Notre équipe d&apos;experts médicaux est dédiée à vous offrir des recommandations précises et adaptées à votre situation individuelle,
                   vous aidant ainsi à prendre les meilleures décisions pour votre bien-être.
                 </p>
               </CardContent>
@@ -53,7 +55,7 @@ export default function HomePage() {
               <Card>
                 <CardContent className="p-6">
                   <p className="text-[#4400ff]/50">
-                    "Les conseils que j'ai reçus m'ont vraiment aidé à améliorer ma santé. Je me sens beaucoup mieux maintenant !"
+                    &quot;Les conseils que j&apos;ai reçu m&apos;ont vraiment aidé à améliorer ma santé. Je me sens beaucoup mieux maintenant !&quot;
                   </p>
                   <p className="text-[#4400ff] mt-4 font-semibold">Marie D.</p>
                 </CardContent>
@@ -61,7 +63,7 @@ export default function HomePage() {
               <Card>
                 <CardContent className="p-6">
                   <p className="text-[#4400ff]/50">
-                    "L'équipe est très professionnelle et à l'écoute. Je recommande vivement leurs services."
+                    &quot;L&apos;équipe est très professionnelle et à l&apos;écoute. Je recommande vivement leurs services.&quot;
                   </p>
                   <p className="text-[#4400ff] mt-4 font-semibold">Pierre L.</p>
                 </CardContent>
@@ -69,7 +71,7 @@ export default function HomePage() {
               <Card>
                 <CardContent className="p-6">
                   <p className="text-[#4400ff]/50">
-                    "Grâce à leur suivi personnalisé, j'ai enfin réussi à atteindre mes objectifs de santé."
+                    &quot;Grâce à leur suivi personnalisé, j&apos;ai enfin réussi à atteindre mes objectifs de santé.&quot;
                   </p>
                   <p className="text-[#4400ff] mt-4 font-semibold">Sophie M.</p>
                 </CardContent>
@@ -82,17 +84,17 @@ export default function HomePage() {
           <div className="container px-4 sm:px-6 md:px-8">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-[#4400ff] text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  Prêt à prendre soin de votre santé ?
+                <h2 className=" text-[#4400ff] text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                  Besoin de plus d&apos;informations ?
                 </h2>
                 <p className="mx-auto max-w-[700px] text-[#4400ff]/50">
-                  Contactez-nous dès aujourd'hui pour obtenir un conseil ou pour toute question.
+                  Contactez-nous dès aujourd&apos;hui pour obtenir un conseil ou pour toute question.
                 </p>
               </div>
               <div className="w-full max-w-sm space-y-2">
                 <form className="flex flex-col space-y-2">
                   <Input placeholder="Votre email" type="email" />
-                  <Button type="submit" className="text-black bg-[#bbff00]">Nous contacter</Button>
+                  <Button type='button' onClick={() => window.location.href = '/contact'} className='text-black bg-[#bbff00]'>Nous contacter</Button>
                 </form>
               </div>
             </div>
@@ -112,7 +114,7 @@ export default function HomePage() {
             Confidentialité
           </Link>
           <Link className="text-xs hover:underline underline-offset-4" href="#">
-            Conditions d'utilisation
+            Conditions d&apos;utilisation
           </Link>
         </nav>
       </footer>

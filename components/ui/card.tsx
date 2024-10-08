@@ -6,7 +6,6 @@ import React, { ReactNode } from 'react';
 interface CardProps {
   children: ReactNode;
   className?: string;
-  [key: string]: any; // This allows other props to be passed
 }
 
 // Composant Card
@@ -22,7 +21,6 @@ export const Card: React.FC<CardProps> = ({ children, className = '', ...props }
 interface CardContentProps {
   children: ReactNode;
   className?: string;
-  [key: string]: any; // This allows other props to be passed
 }
 
 // Composant CardContent

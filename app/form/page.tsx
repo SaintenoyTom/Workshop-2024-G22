@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, ChangeEvent } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -17,7 +17,7 @@ export default function MedicalQuestionnaireCarousel() {
     height: '',
     weight: '',
     gender: '',
-    symptoms: [],
+    symptoms: [] as string[],
     customSymptom: '',
     termsAccepted: false
   })
@@ -39,13 +39,13 @@ export default function MedicalQuestionnaireCarousel() {
 
   const commonSymptoms = ['Fièvre', 'Toux', 'Fatigue', 'Maux de tête', 'Douleurs musculaires']
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target
+  const handleInputChange = (e: ChangeEvent) => {
+    const { name, value } = e.target as HTMLInputElement
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSymptomToggle = (symptom) => {
-    setFormData(prev => ({
+  const handleSymptomToggle = (symptom: string) => {
+    setFormData((prev) => ({
       ...prev,
       symptoms: prev.symptoms.includes(symptom)
         ? prev.symptoms.filter(s => s !== symptom)
@@ -82,7 +82,7 @@ export default function MedicalQuestionnaireCarousel() {
 
   const slides = [
     // Slide 0: Informations personnelles
-    <div key="personal-info" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md">
+    <div key="personal-info" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md flex flex-col">
       <h2 className="text-2xl font-bold text-[#4400ff]">Informations personnelles</h2>
       <div>
         <Label htmlFor="age" className="text-[#4400ff]">Âge</Label>
@@ -99,28 +99,30 @@ export default function MedicalQuestionnaireCarousel() {
       <div>
         <Label className="text-[#4400ff]">Genre</Label>
         <RadioGroup name="gender" value={formData.gender} onValueChange={(value) => setFormData(prev => ({ ...prev, gender: value }))}>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="male" id="male" />
-            <Label htmlFor="male" className="text-[#4400ff]">Homme</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="female" id="female" />
-            <Label htmlFor="female" className="text-[#4400ff]">Femme</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="other" id="other" />
-            <Label htmlFor="other" className="text-[#4400ff]">Autre</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="prefer_not_to_say" id="prefer_not_to_say" />
-            <Label htmlFor="prefer_not_to_say" className="text-[#4400ff]">Je préfère ne pas répondre</Label>
+          <div className="flex flex-col space-y-2">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="male" id="male" />
+              <Label htmlFor="male" className="text-[#4400ff]">Homme</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="female" id="female" />
+              <Label htmlFor="female" className="text-[#4400ff]">Femme</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="other" id="other" />
+              <Label htmlFor="other" className="text-[#4400ff]">Autre</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="prefer_not_to_say" id="prefer_not_to_say" />
+              <Label htmlFor="prefer_not_to_say" className="text-[#4400ff]">Je préfère ne pas répondre</Label>
+            </div>
           </div>
         </RadioGroup>
       </div>
     </div>,
 
     // Slide 1: Symptômes
-    <div key="symptoms" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md">
+    <div key="symptoms" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md flex flex-col">
       <h2 className="text-2xl font-bold text-[#4400ff]">Symptômes</h2>
       {commonSymptoms.map(symptom => (
         <div key={symptom} className="flex items-center space-x-2">
@@ -145,23 +147,23 @@ export default function MedicalQuestionnaireCarousel() {
     </div>,
 
     // Slide 2: Conditions d'utilisation
-    <div key="terms" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md flex flex-col">
+    <div key="terms" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-[#4400ff]">Conditions d'utilisation</h2>
       <div className="flex items-center space-x-2">
         <Checkbox
           id="terms"
           checked={formData.termsAccepted}
-          onCheckedChange={(checked) => setFormData(prev => ({ ...prev, termsAccepted: checked }))}
+          onCheckedChange={(checked) => setFormData(prev => ({ ...prev, termsAccepted: Boolean(checked) }))}
           className="border-[#4400ff] text-[#4400ff]"
         />
-        <Label htmlFor="terms" className="text-[#4400ff]">J'accepte les conditions d'utilisation du site</Label>
+        <Label htmlFor="terms" className="text-[#4400ff]">J&apos;accepte les conditions d&apos;utilisation du site</Label>
       </div>
     </div>,
 
     // Slide 3: Diagnostic et recommandations
-    <div key="diagnosis" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md border border-[#4400ff]/20">
+    <div key="diagnosis" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md border border-[#4400ff]/20 flex flex-col">
       <h2 className="text-2xl font-bold text-[#4400ff]">Diagnostic</h2>
-      <p className="text-sm text-[#4400ff]/80">Ce diagnostic est fourni à titre informatif uniquement et ne remplace pas l'avis d'un professionnel de santé.</p>
+      <p className="text-sm text-[#4400ff]/80">Ce diagnostic est fourni à titre informatif uniquement et ne remplace pas l&apos;avis d&apos;un professionnel de santé.</p>
       <Textarea value={diagnosis} readOnly className="h-40 bg-white/50 border-[#4400ff]/50 focus:border-[#4400ff] text-[#4400ff]" />
       
       <h3 className="text-xl font-semibold text-[#4400ff]">Conseils</h3>
@@ -204,23 +206,23 @@ export default function MedicalQuestionnaireCarousel() {
             <ChevronLeft className="mr-2 h-4 w-4" /> Précédent
           </Button>
           {currentSlide < slides.length - 2 ? (
-            <Button onClick={nextSlide} className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80">
-              Suivant <ChevronRight className="ml-2 h-4 w-4" />
-            </Button>
-          ) : currentSlide === slides.length - 2 ? (
-            <Button 
-              onClick={handleSubmit} 
-              disabled={!formData.termsAccepted} 
-              className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80"
-            >
-              Soumettre
-            </Button>
-          ) : (
-            // Ne rien afficher sur la dernière diapositive
-            <div />
-          )}
-        </div>
+          <Button onClick={nextSlide} className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80">
+            Suivant <ChevronRight className="ml-2 h-4 w-4" />
+          </Button>
+        ) : currentSlide === slides.length - 2 ? (
+          <Button 
+            onClick={handleSubmit} 
+            disabled={!formData.termsAccepted} 
+            className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80"
+          >
+            Soumettre
+          </Button>
+        ) : (
+          // Ne rien afficher sur la dernière diapositive
+          <div />
+        )}
       </div>
     </div>
+  </div>
   )
 }
