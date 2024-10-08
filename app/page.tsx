@@ -23,7 +23,7 @@ export default function HomePage() {
 
               </div>
               <div>
-                <Button className="text-black bg-[#bbff00] primaryOnHover">Obtenir un conseil</Button>
+                <Button className="text-black bg-[#bbff00] primaryOnHover" onClick={() => window.location.href = '/form'}>Obtenir un conseil</Button>
               </div>
             </div>
           </div>
