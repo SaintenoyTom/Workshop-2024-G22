@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, ChangeEvent } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -17,7 +17,7 @@ export default function MedicalQuestionnaireCarousel() {
     height: '',
     weight: '',
     gender: '',
-    symptoms: [],
+    symptoms: [] as string[],
     customSymptom: '',
     termsAccepted: false
   })
@@ -36,13 +36,13 @@ export default function MedicalQuestionnaireCarousel() {
 
   const commonSymptoms = ['Fièvre', 'Toux', 'Fatigue', 'Maux de tête', 'Douleurs musculaires']
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target
+  const handleInputChange = (e: ChangeEvent) => {
+    const { name, value } = e.target as HTMLInputElement
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSymptomToggle = (symptom) => {
-    setFormData(prev => ({
+  const handleSymptomToggle = (symptom: string) => {
+    setFormData((prev) => ({
       ...prev,
       symptoms: prev.symptoms.includes(symptom)
         ? prev.symptoms.filter(s => s !== symptom)
@@ -148,22 +148,22 @@ export default function MedicalQuestionnaireCarousel() {
 
     // Slide 2: Conditions d'utilisation
     <div key="terms" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md flex flex-col">
-      <h2 className="text-2xl font-bold text-[#4400ff]">Conditions d'utilisation</h2>
+      <h2 className="text-2xl font-bold text-[#4400ff]">Conditions d&apos;utilisation</h2>
       <div className="flex items-center space-x-2">
         <Checkbox
           id="terms"
           checked={formData.termsAccepted}
-          onCheckedChange={(checked) => setFormData(prev => ({ ...prev, termsAccepted: checked }))}
+          onCheckedChange={(checked) => setFormData(prev => ({ ...prev, termsAccepted: Boolean(checked) }))}
           className="border-[#4400ff] text-[#4400ff]"
         />
-        <Label htmlFor="terms" className="text-[#4400ff]">J'accepte les conditions d'utilisation du site</Label>
+        <Label htmlFor="terms" className="text-[#4400ff]">J&apos;accepte les conditions d&apos;utilisation du site</Label>
       </div>
     </div>,
 
     // Slide 3: Diagnostic et recommandations
     <div key="diagnosis" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md border border-[#4400ff]/20 flex flex-col">
       <h2 className="text-2xl font-bold text-[#4400ff]">Diagnostic</h2>
-      <p className="text-sm text-[#4400ff]/80">Ce diagnostic est fourni à titre informatif uniquement et ne remplace pas l'avis d'un professionnel de santé.</p>
+      <p className="text-sm text-[#4400ff]/80">Ce diagnostic est fourni à titre informatif uniquement et ne remplace pas l&apos;avis d&apos;un professionnel de santé.</p>
       <Textarea value={diagnosis} readOnly className="h-40 bg-white/50 border-[#4400ff]/50 focus:border-[#4400ff] text-[#4400ff]" />
       <h3 className="text-xl font-semibold text-[#4400ff]">Rendez-vous médicaux recommandés</h3>
       <Table>

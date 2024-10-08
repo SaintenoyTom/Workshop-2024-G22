@@ -4,7 +4,9 @@ const openai = new OpenAI({
   project: process.env.OPENAI_PROJECT_ID
 } );
 
-export async function getMeaning(message: string) {
+export async function GET(request: Request) {
+  const {message} = await request.json();
+
     try {
       const response = await openai.chat.completions.create({
         model: "gpt-4-turbo",
@@ -17,9 +19,10 @@ export async function getMeaning(message: string) {
       });
   
     
-      return response.choices[0].message;
+      return Response.json({response: response.choices[0].message});
     } catch (error) {
       console.error("Erreur lors de la génération d'un résultat", error);
       throw error; 
     }
   }
+
