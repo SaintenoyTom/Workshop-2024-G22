@@ -16,7 +16,7 @@ export default function HomePage() {
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-[#4400ff]">
           Votre santé, notre priorité
         </h1>
-        <p className="mx-auto max-w-[700px] text-[#4400ff]/50 md:text-xl">
+        <p className="mx-auto max-w-[700px] text-[#4400ff]/50 md:text-xl font-bold bg-white border border-gray-300 p-4 shadow-lg">
           Des conseils médicaux personnalisés pour vous aider à prendre les meilleures décisions pour votre santé.
         </p>
       </div>
