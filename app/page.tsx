@@ -10,7 +10,7 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen ">
       <main className="flex-1 ">
         <section className="relative w-full py-12 sm:py-16 md:py-24 lg:py-32 xl:py-48">
-          <div className="absolute inset-0 bg-cover bg-center bg-[url('./../public/images/imageC1.jpeg')] blur-sm"></div>
+          <div className="absolute inset-0 bg-cover bg-center bg-[url('/images/imageC1.jpeg')] blur-sm"></div>
           <div className="relative container px-4 sm:px-6 md:px-8">
             <div className="flex flex-col items-center space-y-4 text-center ">
               <div className="space-y-2">
