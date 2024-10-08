@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  project: "proj_yoReWMjJnMQwjyZFubAmTx9s"
+  project: process.env.OPENAI_PROJECT_ID
 } );
 
 export async function getMeaning(message: string) {
