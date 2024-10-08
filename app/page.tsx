@@ -9,24 +9,24 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen ">
       <main className="flex-1 ">
-      <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48">
-  <div className="absolute inset-0 bg-cover bg-[url('./images/imageC1.jpeg')] blur-sm"></div>
-  <div className="relative container px-4 md:px-6">
-    <div className="flex flex-col items-center space-y-4 text-center ">
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-[#4400ff]">
-          Votre santé, notre priorité
-        </h1>
-        <p className="mx-auto max-w-[700px] text-[#4400ff]/50 md:text-xl">
-          Des conseils médicaux personnalisés pour vous aider à prendre les meilleures décisions pour votre santé.
-        </p>
-      </div>
-      <div>
-        <Button className='text-black bg-[#bbff00]'>Obtenir un conseil</Button>
-      </div>
-    </div>
-  </div>
-</section>
+        <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48">
+          <div className="absolute inset-0 bg-cover bg-[url('/images/imageC1.jpeg')] blur-sm"></div>
+          <div className="relative container px-4 md:px-6">
+            <div className="flex flex-col items-center space-y-4 text-center ">
+              <div className="space-y-2">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-[#4400ff]">
+                  Votre santé, notre priorité
+                </h1>
+                <p className="mx-auto max-w-[700px] text-[#4400ff]/50 md:text-xl">
+                  Des conseils médicaux personnalisés pour vous aider à prendre les meilleures décisions pour votre santé.
+                </p>
+              </div>
+              <div>
+                <Button className='text-black bg-[#bbff00]'>Obtenir un conseil</Button>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
           <div className="container px-4 md:px-6">
@@ -36,8 +36,8 @@ export default function HomePage() {
             <Card className="max-w-3xl mx-auto">
               <CardContent className="p-6">
                 <p className="text-center text-lg text-[#4400ff]/50 dark:text-gray-300">
-                  Chez Conseil Médical, nous nous concentrons exclusivement sur la fourniture de conseils de santé personnalisés. 
-                  Notre équipe d'experts médicaux est dédiée à vous offrir des recommandations précises et adaptées à votre situation individuelle, 
+                  Chez Conseil Médical, nous nous concentrons exclusivement sur la fourniture de conseils de santé personnalisés.
+                  Notre équipe d'experts médicaux est dédiée à vous offrir des recommandations précises et adaptées à votre situation individuelle,
                   vous aidant ainsi à prendre les meilleures décisions pour votre bien-être.
                 </p>
               </CardContent>

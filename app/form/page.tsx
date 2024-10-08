@@ -203,23 +203,23 @@ export default function MedicalQuestionnaireCarousel() {
             <ChevronLeft className="mr-2 h-4 w-4" /> Précédent
           </Button>
           {currentSlide < slides.length - 2 ? (
-          <Button onClick={nextSlide} className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80">
-            Suivant <ChevronRight className="ml-2 h-4 w-4" />
-          </Button>
-        ) : currentSlide === slides.length - 2 ? (
-          <Button 
-            onClick={handleSubmit} 
-            disabled={!formData.termsAccepted} 
-            className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80"
-          >
-            Soumettre
-          </Button>
-        ) : (
-          // Ne rien afficher sur la dernière diapositive
-          <div />
-        )}
+            <Button onClick={nextSlide} className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80">
+              Suivant <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+          ) : currentSlide === slides.length - 2 ? (
+            <Button
+              onClick={handleSubmit}
+              disabled={!formData.termsAccepted}
+              className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80"
+            >
+              Soumettre
+            </Button>
+          ) : (
+            // Ne rien afficher sur la dernière diapositive
+            <div />
+          )}
+        </div>
       </div>
     </div>
-  </div>
   )
 }
