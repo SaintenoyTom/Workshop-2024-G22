@@ -10,10 +10,10 @@ export default function Navbar() {
     return (
         <nav className="secondaryBackground flex flex-row justify-between items-center h-20 px-4 relative">
 
-            <div className="left flex flex-row items-center gap-x-2 p-3">
+            <Link href="/" className="left flex flex-row items-center gap-x-2 p-3">
                 <Image alt="curaconnect_logo" src="/nav_logo.svg" width={50} height={50} />
-                <Link href="/" className="tracking-wide text-2xl">CURACONNECT</Link>
-            </div>
+                <div className="tracking-wide text-2xl">CURACONNECT</div>
+            </Link>
 
             <div className="md:hidden">
                 <button onClick={() => setIsOpen(!isOpen)} className="text-black focus:outline-none relative">
