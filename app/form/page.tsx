@@ -17,13 +17,13 @@ export default function MedicalQuestionnaireCarousel() {
     height: '',
     weight: '',
     gender: '',
+    ville: '',
     symptoms: [] as string[],
     customSymptom: '',
   })
   const [diagnosis, setDiagnosis] = useState('')
   const [advice, setAdvice] = useState('')
   const [checkup, setCheckup] = useState('')
-  const [ville, setVille] = useState('')
   const [recommendations, setRecommendations] = useState<string[]>([])
 
   const [termsAccepted, setTermsAccepted] = useState(false);
@@ -77,7 +77,6 @@ export default function MedicalQuestionnaireCarousel() {
     setAdvice("Vous pouvez prendre deux jours de repos.")
     setCheckup("Il est recommandé d'effectuer un dépistage contre le cancer du sein ainsi qu'une injection du vaccin contre le tétanos.")
     setRecommendations(["Médecin généraliste", "néurologue", "Médecin du sport"])
-    setVille("paris") // Remplacer par la valeur saisie par l'utilisateur
     setCurrentSlide(currentSlide + 1)
   }
 
@@ -107,6 +106,10 @@ export default function MedicalQuestionnaireCarousel() {
       <div>
         <Label htmlFor="weight" className="text-[#4400ff]">Poids (kg)</Label>
         <Input id="weight" name="weight" value={formData.weight} onChange={handleInputChange} placeholder="Poids" />
+      </div>
+      <div>
+        <Label htmlFor="weight" className="text-[#4400ff]">Ville</Label>
+        <Input id="ville" name="ville" value={formData.ville} onChange={handleInputChange} placeholder="Ville" />
       </div>
       <div>
         <Label className="text-[#4400ff]">Genre</Label>
@@ -198,7 +201,7 @@ export default function MedicalQuestionnaireCarousel() {
             <TableRow key={rec}>
               <TableCell className="text-[#4400ff]/80">{rec}</TableCell>
               <TableCell>
-                <a href={`https://www.doctolib.fr/${normalizeString(rec)}/${normalizeString(ville)}`}
+                <a href={`https://www.doctolib.fr/${normalizeString(rec)}/${normalizeString(formData.ville)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#4400ff] hover:text-[#4400ff] underline font-medium hover:font-bold px-4 leading-[1.2] tracking-wide hover:tracking-normal transition-all duration-200"
