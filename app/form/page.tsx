@@ -65,6 +65,12 @@ export default function MedicalQuestionnaireCarousel() {
 
   const handleSubmit = async () => {
     // Simuler l'envoi à ChatGPT et obtenir un diagnostic
+    //const diagnosisResponse = await fetch('/api/getDiagnosis', {
+    //  method: 'POST',
+    //  headers: { 'Content-Type': 'application/json' },
+    //  body: JSON.stringify(formData)
+    //})
+    //const diagnosisData = await diagnosisResponse.json()
     setDiagnosis("test")
     setAdvice("Vous pouvez prendre deux jours de repos.")
     setCheckup("Il est recommandé d'effectuer un dépistage contre le cancer du sein ainsi qu'une injection du vaccin contre le tétanos.")
