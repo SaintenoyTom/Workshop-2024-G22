@@ -23,7 +23,7 @@ export default function HomePage() {
 
               </div>
               <div>
-                <Button className="text-black bg-[#bbff00]">Obtenir un conseil</Button>
+                <Button className="text-black bg-[#bbff00] primaryOnHover">Obtenir un conseil</Button>
               </div>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function HomePage() {
               <div className="w-full max-w-sm space-y-2">
                 <form className="flex flex-col space-y-2">
                   <Input placeholder="Votre email" type="email" />
-                  <Button type='button' onClick={() => window.location.href = '/contact'} className='text-black bg-[#bbff00]'>Nous contacter</Button>
+                  <Button type='button' onClick={() => window.location.href = '/contact'} className=' primaryOnHover text-black bg-[#bbff00]'>Nous contacter</Button>
                 </form>
               </div>
             </div>
