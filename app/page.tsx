@@ -1,8 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CardContent, Card } from "@/components/ui/card"
-import { HeartPulse } from 'lucide-react'
 
 export default function HomePage() {
   return (
@@ -79,7 +80,7 @@ export default function HomePage() {
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className=" text-[#4400ff] text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  Prêt à prendre soin de votre santé ?
+                  Besoin de plus d'informations ?
                 </h2>
                 <p className="mx-auto max-w-[700px] text-[#4400ff]/50">
                   Contactez-nous dès aujourd'hui pour obtenir un conseil ou pour toute question.
@@ -88,7 +89,7 @@ export default function HomePage() {
               <div className="w-full max-w-sm space-y-2">
                 <form className="flex flex-col space-y-2">
                   <Input placeholder="Votre email" type="email" />
-                  <Button type="submit" className='text-black bg-[#bbff00]'>Nous contacter</Button>
+                  <Button type='button' onClick={() => window.location.href = '/contact'} className='text-black bg-[#bbff00]'>Nous contacter</Button>
                 </form>
               </div>
             </div>
