@@ -13,19 +13,20 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 export default function MedicalQuestionnaireCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [formData, setFormData] = useState({
-    age: '',
+    age: 0,
     height: '',
     weight: '',
     gender: '',
     symptoms: [] as string[],
     customSymptom: '',
-    termsAccepted: false
   })
   const [diagnosis, setDiagnosis] = useState('')
   const [advice, setAdvice] = useState('')
   const [checkup, setCheckup] = useState('')
-  const [ville, setVille] = useState('') 
-  const [recommendations, setRecommendations] = useState([])
+  const [ville, setVille] = useState('')
+  const [recommendations, setRecommendations] = useState<string[]>([])
+
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   useEffect(() => {
     const savedData = localStorage.getItem('medicalQuestionnaire')
@@ -81,7 +82,7 @@ export default function MedicalQuestionnaireCarousel() {
     setCurrentSlide(prev => Math.max(prev - 1, 0))
   }
 
-  const normalizeString = (str: string) => 
+  const normalizeString = (str: string) =>
     str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s/g, '-');
 
   const slides = [
@@ -156,8 +157,8 @@ export default function MedicalQuestionnaireCarousel() {
       <div className="flex items-center space-x-2">
         <Checkbox
           id="terms"
-          checked={formData.termsAccepted}
-          onCheckedChange={(checked) => setFormData(prev => ({ ...prev, termsAccepted: Boolean(checked) }))}
+          checked={termsAccepted}
+          onCheckedChange={(checked) => setTermsAccepted(Boolean(checked))}
           className="border-[#4400ff] text-[#4400ff]"
         />
         <Label htmlFor="terms" className="text-[#4400ff]">J&apos;accepte les conditions d&apos;utilisation du site</Label>
@@ -172,11 +173,11 @@ export default function MedicalQuestionnaireCarousel() {
 
       <h3 className="text-xl font-semibold text-[#4400ff]">Conseils</h3>
       <Textarea value={advice} readOnly className="h-40 bg-white/50 border-[#4400ff]/50 focus:border-[#4400ff] text-[#4400ff]" />
-      
+
       <h3 className="text-xl font-semibold text-[#4400ff]">Bilan de santé</h3>
       <p className="text-sm text-[#4400ff]/80">Attention ce bilan de santé est fourni à titre informatif uniquement et ne remplace pas l&apos;avis d&apos;un professionnel de santé.</p>
       <Textarea value={checkup} readOnly className="h-40 bg-white/50 border-[#4400ff]/50 focus:border-[#4400ff] text-[#4400ff]" />
-      
+
       <h3 className="text-xl font-semibold text-[#4400ff]">Rendez-vous médicaux recommandés</h3>
       <Table>
         <TableHeader>
@@ -190,9 +191,9 @@ export default function MedicalQuestionnaireCarousel() {
             <TableRow key={rec}>
               <TableCell className="text-[#4400ff]/80">{rec}</TableCell>
               <TableCell>
-                <a href={`https://www.doctolib.fr/${normalizeString(rec)}/${normalizeString(ville)}`} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a href={`https://www.doctolib.fr/${normalizeString(rec)}/${normalizeString(ville)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-[#4400ff] hover:text-[#4400ff] underline font-medium hover:font-bold px-4 leading-[1.2] tracking-wide hover:tracking-normal transition-all duration-200"
                 >
                   Rechercher sur Doctolib
@@ -215,24 +216,24 @@ export default function MedicalQuestionnaireCarousel() {
             <ChevronLeft className="mr-2 h-4 w-4" /> Précédent
           </Button>
           {currentSlide < slides.length - 2 ? (
-          <Button onClick={nextSlide} className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80">
-            Suivant <ChevronRight className="ml-2 h-4 w-4" />
-          </Button>
-        ) : currentSlide === slides.length - 2 ? (
-          <Button 
-            onClick={handleSubmit} 
-            disabled={!formData.termsAccepted} 
-            className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80"
-          >
-            Soumettre
-          </Button>
-        ) : (
-          // Ne rien afficher sur la dernière diapositive
-          <div />
-        )}
+            <Button onClick={nextSlide} className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80">
+              Suivant <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+          ) : currentSlide === slides.length - 2 ? (
+            <Button
+              onClick={handleSubmit}
+              disabled={!termsAccepted}
+              className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80"
+            >
+              Soumettre
+            </Button>
+          ) : (
+            // Ne rien afficher sur la dernière diapositive
+            <div />
+          )}
+        </div>
       </div>
     </div>
-  </div>
   )
 }
 
