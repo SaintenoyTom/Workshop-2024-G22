@@ -39,10 +39,10 @@ export default function Navbar() {
 
             {isOpen && (
                 <div className="md:hidden absolute top-20 right-0 bg-white shadow-lg z-10">
-                    <div className="flex flex-col items-center py-2">
-                        <Link href="/" className="py-2 px-4 text-center hover:bg-gray-200" onClick={() => setIsOpen(false)}>Accueil</Link>
-                        <Link href="/form" className="py-2 px-4 text-center hover:bg-gray-200" onClick={() => setIsOpen(false)}>Bilan médical</Link>
-                        <Link href="/contact" className="py-2 px-4 text-center hover:bg-gray-200" onClick={() => setIsOpen(false)}>Contact</Link>
+                    <div className="flex flex-col items-center py-2 secondaryBackground">
+                        <Link href="/" className="w-full py-2 px-4 text-center primaryOnHover " onClick={() => setIsOpen(false)}>Accueil</Link>
+                        <Link href="/form" className="w-full py-2 px-4 text-center primaryOnHover" onClick={() => setIsOpen(false)}>Bilan médical</Link>
+                        <Link href="/contact" className="w-full py-2 px-4 text-center primaryOnHover" onClick={() => setIsOpen(false)}>Contact</Link>
                     </div>
                 </div>
             )}
