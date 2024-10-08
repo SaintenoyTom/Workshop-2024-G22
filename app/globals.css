@@ -67,3 +67,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+.secondaryBackground {
+  background-color: #BBFF00;
+  color: black
+}
+
+.primaryOnHover {
+  transition-property: background-color, color;
+  transition-duration: 0.5s;
+}
+
+.primaryOnHover:hover {
+  background-color: #4400FF;
+  color: white
+}
