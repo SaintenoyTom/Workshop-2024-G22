@@ -1,5 +1,8 @@
 import OpenAI from "openai";
-const openai = new OpenAI();
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+  project: "proj_yoReWMjJnMQwjyZFubAmTx9s"
+} );
 
 export async function getMeaning(message: string) {
     try {
