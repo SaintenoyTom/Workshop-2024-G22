@@ -93,7 +93,6 @@ export default function HomePage() {
               </div>
               <div className="w-full max-w-sm space-y-2">
                 <form className="flex flex-col space-y-2">
-                  <Input placeholder="Votre email" type="email" />
                   <Button type='button' onClick={() => window.location.href = '/contact'} className=' primaryOnHover text-black bg-[#bbff00]'>Nous contacter</Button>
                 </form>
               </div>
