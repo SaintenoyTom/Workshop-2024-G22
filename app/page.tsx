@@ -8,27 +8,27 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen ">
       <main className="flex-1 ">
-      <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48">
-  <div className="absolute inset-0 bg-cover bg-[url('./images/imageC1.jpeg')] blur-sm"></div>
-  <div className="relative container px-4 md:px-6">
-    <div className="flex flex-col items-center space-y-4 text-center ">
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-[#4400ff]">
-          Votre santé, notre priorité
-        </h1>
-        <p className="mx-auto max-w-[700px] text-[#4400ff]/50 md:text-xl font-bold bg-white border border-gray-300 p-4 shadow-lg">
-          Des conseils médicaux personnalisés pour vous aider à prendre les meilleures décisions pour votre santé.
-        </p>
-      </div>
-      <div>
-        <Button className='text-black bg-[#bbff00]'>Obtenir un conseil</Button>
-      </div>
-    </div>
-  </div>
-</section>
+        <section className="relative w-full py-12 sm:py-16 md:py-24 lg:py-32 xl:py-48">
+          <div className="absolute inset-0 bg-cover bg-center bg-[url('./images/imageC1.jpeg')] blur-sm"></div>
+          <div className="relative container px-4 sm:px-6 md:px-8">
+            <div className="flex flex-col items-center space-y-4 text-center ">
+              <div className="space-y-2">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-[#4400ff]">
+                  Votre santé, notre priorité
+                </h1>
+                <p className="mx-auto max-w-[700px] text-[#4400ff]/50 md:text-xl text-base font-bold bg-white border border-gray-300 p-4 shadow-lg">
+                  Des conseils médicaux personnalisés pour vous aider à prendre les meilleures décisions pour votre santé.
+                </p>
+              </div>
+              <div>
+                <Button className="text-black bg-[#bbff00]">Obtenir un conseil</Button>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
-          <div className="container px-4 md:px-6">
+        <section className="w-full py-12 sm:py-16 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
+          <div className="container px-4 sm:px-6 md:px-8">
             <h2 className="text-[#4400ff] text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
               Nos services
             </h2>
@@ -43,9 +43,10 @@ export default function HomePage() {
             </Card>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <h2 className=" text-[#4400ff] text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
+
+        <section className="w-full py-12 sm:py-16 md:py-24 lg:py-32">
+          <div className="container px-4 sm:px-6 md:px-8">
+            <h2 className="text-[#4400ff] text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
               Ce que disent nos patients
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -54,7 +55,7 @@ export default function HomePage() {
                   <p className="text-[#4400ff]/50">
                     "Les conseils que j'ai reçus m'ont vraiment aidé à améliorer ma santé. Je me sens beaucoup mieux maintenant !"
                   </p>
-                  <p className=" text-[#4400ff] mt-4 font-semibold">Marie D.</p>
+                  <p className="text-[#4400ff] mt-4 font-semibold">Marie D.</p>
                 </CardContent>
               </Card>
               <Card>
@@ -62,7 +63,7 @@ export default function HomePage() {
                   <p className="text-[#4400ff]/50">
                     "L'équipe est très professionnelle et à l'écoute. Je recommande vivement leurs services."
                   </p>
-                  <p className=" text-[#4400ff] mt-4 font-semibold">Pierre L.</p>
+                  <p className="text-[#4400ff] mt-4 font-semibold">Pierre L.</p>
                 </CardContent>
               </Card>
               <Card>
@@ -70,17 +71,18 @@ export default function HomePage() {
                   <p className="text-[#4400ff]/50">
                     "Grâce à leur suivi personnalisé, j'ai enfin réussi à atteindre mes objectifs de santé."
                   </p>
-                  <p className=" text-[#4400ff] mt-4 font-semibold">Sophie M.</p>
+                  <p className="text-[#4400ff] mt-4 font-semibold">Sophie M.</p>
                 </CardContent>
               </Card>
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
-          <div className="container px-4 md:px-6">
+
+        <section className="w-full py-12 sm:py-16 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
+          <div className="container px-4 sm:px-6 md:px-8">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className=" text-[#4400ff] text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                <h2 className="text-[#4400ff] text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                   Prêt à prendre soin de votre santé ?
                 </h2>
                 <p className="mx-auto max-w-[700px] text-[#4400ff]/50">
@@ -90,14 +92,15 @@ export default function HomePage() {
               <div className="w-full max-w-sm space-y-2">
                 <form className="flex flex-col space-y-2">
                   <Input placeholder="Votre email" type="email" />
-                  <Button type="submit" className='text-black bg-[#bbff00]'>Nous contacter</Button>
+                  <Button type="submit" className="text-black bg-[#bbff00]">Nous contacter</Button>
                 </form>
               </div>
             </div>
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+
+      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 sm:px-6 md:px-8 border-t">
         <p className="text-xs text-gray-500 dark:text-gray-400">
           © 2024 Conseil Médical. Tous droits réservés.
         </p>
