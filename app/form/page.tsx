@@ -75,7 +75,7 @@ export default function MedicalQuestionnaireCarousel() {
     setDiagnosis("test") // Remplacer "test" par diagnosisData.diagnosis
     setAdvice("Vous pouvez prendre deux jours de repos.")
     setCheckup("Il est recommandé d'effectuer un dépistage contre le cancer du sein ainsi qu'une injection du vaccin contre le tétanos.")
-    setRecommendations(["Médecin généraliste", "néurologue", "Médecin du sport"])
+    //setRecommendations(["Médecin généraliste", "néurologue", "Médecin du sport"])
     setVille("paris") // Remplacer par la valeur saisie par l'utilisateur
     setCurrentSlide(currentSlide + 1)
   }
