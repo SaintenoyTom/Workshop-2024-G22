@@ -171,10 +171,11 @@ export default function MedicalQuestionnaireCarousel() {
       <Textarea value={diagnosis} readOnly className="h-40 bg-white/50 border-[#4400ff]/50 focus:border-[#4400ff] text-[#4400ff]" />
 
       <h3 className="text-xl font-semibold text-[#4400ff]">Conseils</h3>
-      <p>{advice}</p>
+      <Textarea value={advice} readOnly className="h-40 bg-white/50 border-[#4400ff]/50 focus:border-[#4400ff] text-[#4400ff]" />
       
       <h3 className="text-xl font-semibold text-[#4400ff]">Bilan de santé</h3>
-      <p>{checkup}</p>
+      <p className="text-sm text-[#4400ff]/80">Attention ce bilan de santé est fourni à titre informatif uniquement et ne remplace pas l&apos;avis d&apos;un professionnel de santé.</p>
+      <Textarea value={checkup} readOnly className="h-40 bg-white/50 border-[#4400ff]/50 focus:border-[#4400ff] text-[#4400ff]" />
       
       <h3 className="text-xl font-semibold text-[#4400ff]">Rendez-vous médicaux recommandés</h3>
       <Table>
