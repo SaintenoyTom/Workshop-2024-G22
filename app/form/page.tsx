@@ -66,7 +66,14 @@ export default function MedicalQuestionnaireCarousel() {
   }
 
   const handleSubmit = async () => {
-    setDiagnosis("Vous présentez des symptômes similaires à une grippe. Il est recommandé de consulter un médecin si les symptômes persistent.")
+    // Simuler l'envoi à ChatGPT et obtenir un diagnostic
+    //const diagnosisResponse = await fetch('/api/getDiagnosis', {
+    //  method: 'POST',
+    //  headers: { 'Content-Type': 'application/json' },
+    //  body: JSON.stringify(formData)
+    //})
+    //const diagnosisData = await diagnosisResponse.json()
+    setDiagnosis("test") // Remplacer "test" par diagnosisData.diagnosis
     setAdvice("Vous pouvez prendre deux jours de repos.")
     setCheckup("Il est recommandé d'effectuer un dépistage contre le cancer du sein ainsi qu'une injection du vaccin contre le tétanos.")
     setRecommendations(["Médecin généraliste", "néurologue", "Médecin du sport"])
