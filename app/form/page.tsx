@@ -82,7 +82,7 @@ export default function MedicalQuestionnaireCarousel() {
 
   const slides = [
     // Slide 0: Informations personnelles
-    <div key="personal-info" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md">
+    <div key="personal-info" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md flex flex-col">
       <h2 className="text-2xl font-bold text-[#4400ff]">Informations personnelles</h2>
       <div>
         <Label htmlFor="age" className="text-[#4400ff]">Âge</Label>
@@ -99,28 +99,30 @@ export default function MedicalQuestionnaireCarousel() {
       <div>
         <Label className="text-[#4400ff]">Genre</Label>
         <RadioGroup name="gender" value={formData.gender} onValueChange={(value) => setFormData(prev => ({ ...prev, gender: value }))}>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="male" id="male" />
-            <Label htmlFor="male" className="text-[#4400ff]">Homme</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="female" id="female" />
-            <Label htmlFor="female" className="text-[#4400ff]">Femme</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="other" id="other" />
-            <Label htmlFor="other" className="text-[#4400ff]">Autre</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="prefer_not_to_say" id="prefer_not_to_say" />
-            <Label htmlFor="prefer_not_to_say" className="text-[#4400ff]">Je préfère ne pas répondre</Label>
+          <div className="flex flex-col space-y-2">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="male" id="male" />
+              <Label htmlFor="male" className="text-[#4400ff]">Homme</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="female" id="female" />
+              <Label htmlFor="female" className="text-[#4400ff]">Femme</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="other" id="other" />
+              <Label htmlFor="other" className="text-[#4400ff]">Autre</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="prefer_not_to_say" id="prefer_not_to_say" />
+              <Label htmlFor="prefer_not_to_say" className="text-[#4400ff]">Je préfère ne pas répondre</Label>
+            </div>
           </div>
         </RadioGroup>
       </div>
     </div>,
 
     // Slide 1: Symptômes
-    <div key="symptoms" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md">
+    <div key="symptoms" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md flex flex-col">
       <h2 className="text-2xl font-bold text-[#4400ff]">Symptômes</h2>
       {commonSymptoms.map(symptom => (
         <div key={symptom} className="flex items-center space-x-2">
@@ -145,7 +147,7 @@ export default function MedicalQuestionnaireCarousel() {
     </div>,
 
     // Slide 2: Conditions d'utilisation
-    <div key="terms" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md">
+    <div key="terms" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md flex flex-col">
       <h2 className="text-2xl font-bold text-[#4400ff]">Conditions d'utilisation</h2>
       <div className="flex items-center space-x-2">
         <Checkbox
@@ -159,7 +161,7 @@ export default function MedicalQuestionnaireCarousel() {
     </div>,
 
     // Slide 3: Diagnostic et recommandations
-    <div key="diagnosis" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md border border-[#4400ff]/20">
+    <div key="diagnosis" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md border border-[#4400ff]/20 flex flex-col">
       <h2 className="text-2xl font-bold text-[#4400ff]">Diagnostic</h2>
       <p className="text-sm text-[#4400ff]/80">Ce diagnostic est fourni à titre informatif uniquement et ne remplace pas l'avis d'un professionnel de santé.</p>
       <Textarea value={diagnosis} readOnly className="h-40 bg-white/50 border-[#4400ff]/50 focus:border-[#4400ff] text-[#4400ff]" />
