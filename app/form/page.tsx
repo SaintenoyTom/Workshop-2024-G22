@@ -71,7 +71,7 @@ export default function MedicalQuestionnaireCarousel() {
     //  body: JSON.stringify(formData)
     //})
     //const diagnosisData = await diagnosisResponse.json()
-    setDiagnosis("test")
+    setDiagnosis("test") // Remplacer "test" par diagnosisData.diagnosis
     setAdvice("Vous pouvez prendre deux jours de repos.")
     setCheckup("Il est recommandé d'effectuer un dépistage contre le cancer du sein ainsi qu'une injection du vaccin contre le tétanos.")
     setRecommendations(["Médecin généraliste", "cardiologue", "Médecin du sport"]) // Ajout de recommandations
