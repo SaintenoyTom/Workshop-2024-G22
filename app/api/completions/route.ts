@@ -1,13 +1,11 @@
 import OpenAI from "openai";
 
-
 export async function POST(request: Request) {
-
   const message = await request.json();
 
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
-    project: process.env.OPENAI_PROJECT_ID
+    project: process.env.OPENAI_PROJECT_ID,
   });
 
   const requestToAI = `
@@ -43,7 +41,7 @@ export async function POST(request: Request) {
     All the answers must be written in french.
 
     Do not send anything else than the json asked.
-  `
+  `;
 
   try {
     const response = await openai.chat.completions.create({
@@ -51,11 +49,10 @@ export async function POST(request: Request) {
       messages: [
         {
           role: "user",
-          content: requestToAI
-        }
-      ]
+          content: requestToAI,
+        },
+      ],
     });
-
 
     return Response.json({ response: response.choices[0].message.content });
   } catch (error) {
