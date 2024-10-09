@@ -7,7 +7,7 @@ export async function POST(request: Request) {
 
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
-    project: "proj_yoReWMjJnMQwjyZFubAmTx9s"
+    project: process.env.OPENAI_PROJECT_ID
   });
 
   const requestToAI = `
