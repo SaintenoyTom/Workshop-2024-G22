@@ -63,6 +63,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -81,4 +82,23 @@
 .primaryOnHover:hover {
   background-color: #4400FF;
   color: white
+}
+
+.loader {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

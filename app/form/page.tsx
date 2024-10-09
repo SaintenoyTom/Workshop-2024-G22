@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link";
+import { json } from 'stream/consumers'
 
 export default function MedicalQuestionnaireCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -25,8 +26,8 @@ export default function MedicalQuestionnaireCarousel() {
   const [diagnosis, setDiagnosis] = useState('')
   const [advice, setAdvice] = useState('')
   const [checkup, setCheckup] = useState('')
-  const [recommendations, setRecommendations] = useState<string[]>([])
-
+  const [recommendations, setRecommendations] = useState<string[]>([""])
+  const [loading, setLoading] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
 
   useEffect(() => {
@@ -67,18 +68,30 @@ export default function MedicalQuestionnaireCarousel() {
   }
 
   const handleSubmit = async () => {
-    // Simuler l'envoi à ChatGPT et obtenir un diagnostic
-    //const diagnosisResponse = await fetch('/api/getDiagnosis', {
-    //  method: 'POST',
-    //  headers: { 'Content-Type': 'application/json' },
-    //  body: JSON.stringify(formData)
-    //})
-    //const diagnosisData = await diagnosisResponse.json()
-    setDiagnosis("test") // Remplacer "test" par diagnosisData.diagnosis
-    setAdvice("Vous pouvez prendre deux jours de repos.")
-    setCheckup("Il est recommandé d'effectuer un dépistage contre le cancer du sein ainsi qu'une injection du vaccin contre le tétanos.")
-    setRecommendations(["Médecin généraliste", "néurologue", "Médecin du sport"])
-    setCurrentSlide(currentSlide + 1)
+    setLoading(true);
+
+    try {
+      // Simuler l'envoi à ChatGPT et obtenir un diagnostic
+      const diagnosisResponse = await fetch('/api/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+
+      const diagnosisData = await diagnosisResponse.json()
+      const cleanedResponse = diagnosisData.response.replace(/```json|```/g, '').trim();
+      const jsonReponse = JSON.parse(cleanedResponse)
+      console.log()
+      setDiagnosis(jsonReponse?.diagnosis) // Remplacer "test" par diagnosisData.diagnosis
+      setAdvice(jsonReponse?.advice)
+      setCheckup(jsonReponse?.checkup)
+      setRecommendations(jsonReponse?.recommendations)
+      setCurrentSlide(currentSlide + 1)
+    } catch (error) {
+      console.error("Erreur dans le traitement de la réponse :", error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   const nextSlide = () => {
@@ -201,7 +214,7 @@ export default function MedicalQuestionnaireCarousel() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {recommendations.map((rec) => (
+          {recommendations && recommendations.map((rec) => (
             <TableRow key={rec}>
               <TableCell className="text-[#4400ff]/80">{rec}</TableCell>
               <TableCell>
@@ -239,7 +252,11 @@ export default function MedicalQuestionnaireCarousel() {
               disabled={!termsAccepted}
               className="bg-[#4400ff] text-white hover:bg-[#4400ff]/80"
             >
-              Soumettre
+              {loading ? (
+                <span className="loader"></span> // Affichez le loader ici
+              ) : (
+                'Soumettre'
+              )}
             </Button>
           ) : (
             // Ne rien afficher sur la dernière diapositive
