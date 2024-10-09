@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Link from "next/link";
 
 export default function MedicalQuestionnaireCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -164,6 +165,9 @@ export default function MedicalQuestionnaireCarousel() {
     // Slide 2: Conditions d'utilisation
     <div key="terms" className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-[#4400ff]">Conditions d&apos;utilisation</h2>
+      <Link className='text-[#4400ff]/70 hover:underline' href="/conditions">
+        voir les conditions d&apos;utilisation
+      </Link>
       <div className="flex items-center space-x-2">
         <Checkbox
           id="terms"
