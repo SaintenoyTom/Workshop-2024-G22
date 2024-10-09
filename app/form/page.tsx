@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -27,7 +27,6 @@ export default function MedicalQuestionnaireCarousel() {
     gender: "",
     ville: "",
     symptoms: [] as string[],
-    customSymptom: "",
   });
   const [diagnosis, setDiagnosis] = useState("");
   const [advice, setAdvice] = useState("");
@@ -35,6 +34,15 @@ export default function MedicalQuestionnaireCarousel() {
   const [recommendations, setRecommendations] = useState<string[]>([""]);
   const [loading, setLoading] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [commonSymptoms, setCommonSymptoms] = useState([
+    "Fièvre",
+    "Toux",
+    "Fatigue",
+    "Maux de tête",
+    "Douleurs musculaires",
+  ]);
+
+  const symptomInput = useRef<null | HTMLInputElement>(null);
 
   useEffect(() => {
     const savedData = localStorage.getItem("medicalQuestionnaire");
@@ -46,14 +54,6 @@ export default function MedicalQuestionnaireCarousel() {
   useEffect(() => {
     localStorage.setItem("medicalQuestionnaire", JSON.stringify(formData));
   }, [formData]);
-
-  const commonSymptoms = [
-    "Fièvre",
-    "Toux",
-    "Fatigue",
-    "Maux de tête",
-    "Douleurs musculaires",
-  ];
 
   const handleInputChange = (e: ChangeEvent) => {
     const { name, value } = e.target as HTMLInputElement;
@@ -69,17 +69,21 @@ export default function MedicalQuestionnaireCarousel() {
     }));
   };
 
-  const handleCustomSymptom = () => {
-    if (
-      formData.customSymptom &&
-      !formData.symptoms.includes(formData.customSymptom)
-    ) {
+  const handleNewSymptom = () => {
+    if (!symptomInput.current) return;
+
+    const newSymptom = symptomInput.current.value;
+
+    if (newSymptom.length && !formData.symptoms.includes(newSymptom)) {
       setFormData((prev) => ({
         ...prev,
-        symptoms: [...prev.symptoms, prev.customSymptom],
-        customSymptom: "",
+        symptoms: [...prev.symptoms, newSymptom],
       }));
+
+      setCommonSymptoms((prev) => [...prev, newSymptom]);
     }
+
+    symptomInput.current.value = "";
   };
 
   const handleSubmit = async () => {
@@ -247,32 +251,17 @@ export default function MedicalQuestionnaireCarousel() {
       <div className="flex space-x-2">
         <Input
           placeholder="Autre symptôme"
-          value={formData.customSymptom}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, customSymptom: e.target.value }))
-          }
+          ref={symptomInput}
           className="bg-white/50 border-[#4400ff]/50 focus:border-[#4400ff]"
         />
         <Button
-          onClick={handleCustomSymptom}
+          onClick={handleNewSymptom}
           className="bg-[#4400ff] hover:bg-[#4400ff]/80 text-white"
         >
           Ajouter
         </Button>
       </div>
-    </div>,
-
-    // Slide 2: Conditions d'utilisation
-    <div
-      key="terms"
-      className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md"
-    >
-      <h2 className="text-2xl font-bold text-[#4400ff]">
-        Conditions d&apos;utilisation
-      </h2>
-      <Link className="text-[#4400ff]/70 hover:underline" href="/conditions">
-        voir les conditions d&apos;utilisation
-      </Link>
+      <hr className="h-px my-8 bg-[#4400ff] border-0 dark:bg-[#4400ff]" />
       <div className="flex items-center space-x-2">
         <Checkbox
           id="terms"
@@ -280,8 +269,14 @@ export default function MedicalQuestionnaireCarousel() {
           onCheckedChange={(checked) => setTermsAccepted(Boolean(checked))}
           className="border-[#4400ff] text-[#4400ff]"
         />
-        <Label htmlFor="terms" className="text-[#4400ff]">
-          J&apos;accepte les conditions d&apos;utilisation du site
+        <Label htmlFor="terms" className="text-[#4400ff] cursor-pointer">
+          <Link
+            className="text-[#4400ff]/70 hover:underline"
+            target="_blank"
+            href="/conditions"
+          >
+            J&apos;accepte les conditions d&apos;utilisation du site
+          </Link>
         </Label>
       </div>
     </div>,
