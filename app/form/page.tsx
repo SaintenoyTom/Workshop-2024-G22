@@ -10,7 +10,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link";
-import { json } from 'stream/consumers'
 
 export default function MedicalQuestionnaireCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
