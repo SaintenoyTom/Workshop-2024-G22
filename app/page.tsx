@@ -12,13 +12,17 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-cover bg-center bg-[url('/images/imageC1.jpeg')] blur-sm"></div>
           <div className="relative container px-4 sm:px-6 md:px-8">
             <div className="flex flex-col items-center space-y-4 text-center ">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-[#4400ff]">
+              <div className="space-y-1">
+              <div className="space-y-5 bg-white p-6 rounded-lg shadow-md border border-gray-300 leading-relaxed">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tighter text-[#4400ff]">
                   Votre santé, notre priorité
                 </h1>
-                <p className="mx-auto max-w-[700px] text-[#4400ff]/50 md:text-xl text-base font-bold bg-white border border-gray-300 p-4 shadow-lg">
+                <p className="mx-auto max-w-[700px] text-[#4400ff]/50 text-sm sm:text-base md:text-lg lg:text-xl font-bold">
                   Des conseils médicaux personnalisés pour vous aider à prendre les meilleures décisions pour votre santé.
                 </p>
+              </div>
+
+
 
               </div>
               <div>
