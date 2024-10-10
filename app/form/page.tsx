@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, ChangeEvent, useRef } from "react";
+import React, { useState, useEffect, ChangeEvent, useRef, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -25,8 +25,9 @@ export default function MedicalQuestionnaireCarousel() {
     height: "",
     weight: "",
     gender: "",
-    ville: "",
+    city: "",
     symptoms: [] as string[],
+    caseHistory: "",
   });
   const [diagnosis, setDiagnosis] = useState("");
   const [advice, setAdvice] = useState("");
@@ -42,7 +43,12 @@ export default function MedicalQuestionnaireCarousel() {
     "Douleurs musculaires",
   ]);
 
+  useEffect(() => {
+    if (currentSlide === 1 && caseHistoryDiv.current && caseHistoryDiv.current.innerHTML?.length === 0) caseHistoryDiv.current.innerHTML = formData.caseHistory
+  }, [currentSlide, formData.caseHistory])
+
   const symptomInput = useRef<null | HTMLInputElement>(null);
+  const caseHistoryDiv = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     const savedData = localStorage.getItem("medicalQuestionnaire");
@@ -146,6 +152,7 @@ export default function MedicalQuestionnaireCarousel() {
         <Input
           id="age"
           name="age"
+          type="number"
           value={formData.age}
           onChange={handleInputChange}
           placeholder="Âge"
@@ -176,15 +183,15 @@ export default function MedicalQuestionnaireCarousel() {
         />
       </div>
       <div>
-        <Label htmlFor="weight" className="text-[#4400ff]">
+        <Label htmlFor="city" className="text-[#4400ff]">
           Ville
         </Label>
         <Input
-          id="ville"
-          name="ville"
-          value={formData.ville}
+          id="city"
+          name="city"
+          value={formData.city}
           onChange={handleInputChange}
-          placeholder="Ville"
+          placeholder="ex: Paris"
         />
       </div>
       <div>
@@ -261,6 +268,18 @@ export default function MedicalQuestionnaireCarousel() {
           Ajouter
         </Button>
       </div>
+      <div className="flex flex-col space-y-5">
+        <Label htmlFor="caseHistory" className="text-[#4400ff]">
+          Vos antécédents (personnels et familiaux)
+        </Label>
+        <div
+          id="caseHistory"
+          className="bg-white/50 border border-[#4400ff]/50 focus:border-[#4400ff] min-h-20 p-2 text-sm rounded-md"
+          contentEditable={true}
+          ref={caseHistoryDiv}
+          onInput={(event: FormEvent<HTMLDivElement>) => setFormData((prev) => ({ ...prev, caseHistory: (event.target as HTMLDivElement).innerHTML || "" }))}
+        ></div>
+      </div>
       <hr className="h-px my-8 bg-[#4400ff] border-0 dark:bg-[#4400ff]" />
       <div className="flex items-center space-x-2">
         <Checkbox
@@ -336,7 +355,7 @@ export default function MedicalQuestionnaireCarousel() {
                   <a
                     href={`https://www.doctolib.fr/${normalizeString(
                       rec
-                    )}/${normalizeString(formData.ville)}`}
+                    )}/${normalizeString(formData.city)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#4400ff] hover:text-[#4400ff] underline font-medium hover:font-bold px-4 leading-[1.2] tracking-wide hover:tracking-normal transition-all duration-200"

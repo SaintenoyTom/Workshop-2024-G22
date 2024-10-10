@@ -24,6 +24,8 @@ export async function POST(request: Request) {
 
     The patient's symptoms: ${message.symptoms}
 
+    The patient's case history: ${message.caseHistory}
+
     Please return your advice in the following json format :
 
     '''json

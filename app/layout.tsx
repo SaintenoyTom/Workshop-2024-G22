@@ -19,12 +19,11 @@ export default function RootLayout({
       <head>
         <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
       </head>
-      <body className={`font-sans antialiased`}>
+      <body className={`font-sans antialiased flex flex-col min-h-screen`}>
         <Navbar />
-        {children}
+        <main className="flex-grow flex items-center justify-center">{children}</main>
         <Footer />
       </body>
     </html>
   );
 }
-
