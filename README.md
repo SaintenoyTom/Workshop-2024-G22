@@ -1,4 +1,4 @@
-# APPIZZA
+# CURACONNECT
 
 ## :pushpin: Table des matières
 - [Description](#clipboard-description)
