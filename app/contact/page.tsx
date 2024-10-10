@@ -104,13 +104,16 @@ export default function FormulaireCcontact() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-      <div className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-6 text-[#4400ff]">
+      <h1 className="text-3xl font-bold mb-6 text-[#4400ff] text-center">
+        Questionnaire Médical
+      </h1>
+      <div className="space-y-4 bg-[#4400ff]/10 p-6 rounded-lg shadow-md flex flex-col">
+        <h2 className="text-2xl font-bold text-[#4400ff]">
           Contactez-nous
         </h2>
         <form className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="nom" className="text-md">
+            <Label htmlFor="nom" className="text-sm">
               <span className="text-[#4400ff]">Nom</span> <span className="text-red-500 font-bold">*</span>
             </Label>
             <FormError name="nom" isError={formData.surname.error} />
