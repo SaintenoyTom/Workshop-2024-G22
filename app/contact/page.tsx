@@ -110,8 +110,8 @@ export default function FormulaireCcontact() {
         </h2>
         <form className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="nom" className="text-md text-[#4400ff]">
-              Nom
+            <Label htmlFor="nom" className="text-md">
+              <span className="text-[#4400ff]">Nom</span> <span className="text-red-500 font-bold">*</span>
             </Label>
             <FormError name="nom" isError={formData.surname.error} />
             <Input
@@ -133,7 +133,7 @@ export default function FormulaireCcontact() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="prenom" className="text-md text-[#4400ff]">
-              Prénom
+              <span className="text-[#4400ff]">Prénom</span> <span className="text-red-500 font-bold">*</span>
             </Label>
             <FormError name="prénom" isError={formData.name.error} />
             <Input
@@ -155,7 +155,7 @@ export default function FormulaireCcontact() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="email" className="text-md text-[#4400ff]">
-              Email
+              <span className="text-[#4400ff]">Email</span> <span className="text-red-500 font-bold">*</span>
             </Label>
             <FormError name="email" isError={formData.email.error} />
             <Input
@@ -178,7 +178,7 @@ export default function FormulaireCcontact() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="message" className="text-md text-[#4400ff]">
-              Message
+              <span className="text-[#4400ff]">Message</span> <span className="text-red-500 font-bold">*</span>
             </Label>
             <FormError name="message" isError={formData.message.error} />
             <Textarea
@@ -201,9 +201,8 @@ export default function FormulaireCcontact() {
           <div className={`flex w-full items-center justify-center`}>
             <Button
               type="button"
-              className={`${
-                isLoading ? "w-20" : "w-full"
-              } bg-[#4400ff] hover:bg-[#3300cc] text-white font-bold py-2 px-4 rounded`}
+              className={`${isLoading ? "w-20" : "w-full"
+                } bg-[#4400ff] hover:bg-[#3300cc] text-white font-bold py-2 px-4 rounded`}
               onClick={handleForm}
               disabled={isLoading}
             >
