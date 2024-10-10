@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, ChangeEvent, useRef, FormEvent, ReactEventHandler, SyntheticEvent } from "react";
+import React, { useState, useEffect, ChangeEvent, useRef, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -44,8 +44,8 @@ export default function MedicalQuestionnaireCarousel() {
   ]);
 
   useEffect(() => {
-    if (currentSlide === 1 && caseHistoryDiv.current) caseHistoryDiv.current.textContent = formData.caseHistory
-  }, [currentSlide])
+    if (currentSlide === 1 && caseHistoryDiv.current && caseHistoryDiv.current.innerHTML?.length === 0) caseHistoryDiv.current.innerHTML = formData.caseHistory
+  }, [currentSlide, formData.caseHistory])
 
   const symptomInput = useRef<null | HTMLInputElement>(null);
   const caseHistoryDiv = useRef<null | HTMLDivElement>(null);
@@ -277,7 +277,7 @@ export default function MedicalQuestionnaireCarousel() {
           className="bg-white/50 border border-[#4400ff]/50 focus:border-[#4400ff] min-h-20 p-2 text-sm rounded-md"
           contentEditable={true}
           ref={caseHistoryDiv}
-          onInput={(event: FormEvent<HTMLDivElement>) => setFormData((prev) => ({ ...prev, caseHistory: (event.target as HTMLDivElement).textContent || "" }))}
+          onInput={(event: FormEvent<HTMLDivElement>) => setFormData((prev) => ({ ...prev, caseHistory: (event.target as HTMLDivElement).innerHTML || "" }))}
         ></div>
       </div>
       <hr className="h-px my-8 bg-[#4400ff] border-0 dark:bg-[#4400ff]" />
