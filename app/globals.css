@@ -107,6 +107,7 @@
   /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
   display: grid;
 }
+
 .grow-wrap::after {
   /* Note the weird space! Needed to preventy jumpy behavior */
   content: attr(data-replicated-value) " ";
@@ -117,14 +118,16 @@
   /* Hidden from view, clicks, and screen readers */
   visibility: hidden;
 }
-.grow-wrap > textarea {
+
+.grow-wrap>textarea {
   /* You could leave this, but after a user resizes, then it ruins the auto sizing */
   resize: none;
 
   /* Firefox shows scrollbar on growth, you can hide like this. */
   overflow: hidden;
 }
-.grow-wrap > textarea,
+
+.grow-wrap>textarea,
 .grow-wrap::after {
   /* Identical styling required!! */
   border: 1px solid black;
@@ -133,4 +136,23 @@
 
   /* Place on top of each other */
   grid-area: 1 / 1 / 2 / 2;
+}
+
+body {
+  height: 100%;
+  /* S'assurer que le body utilise toute la hauteur */
+  margin: 0;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  /* Disposition en colonne */
+  min-height: 100vh;
+  /* Prend toute la hauteur de la fenêtre */
+}
+
+.container {
+  flex: 1;
+  /* Prend l'espace restant */
 }
