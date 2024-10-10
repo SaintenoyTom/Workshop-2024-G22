@@ -87,12 +87,12 @@ export default function ConditionsUtilisation() {
                 {/* Section 10: Contact */}
                 <section id="contact" className="mb-8">
                     <h2 className="text-2xl font-bold text-[#4400ff] mb-4">10. Contact</h2>
-                    <p>Pour toute question ou demande d&apos;informations supplémentaires concernant ces conditions d&apos;utilisation, veuillez nous contacter à l&apos;adresse suivante : support@curaconnect.com</p>
+                    <p>Pour toute question ou demande d&apos;informations supplémentaires concernant ces conditions d&apos;utilisation, veuillez nous contacter à l&apos;adresse suivante : curaconnect.france@gmail.com</p>
                 </section>
 
             </main>
             <footer className="py-6 text-center border-t border-gray-200 dark:border-gray-800">
-                <p className="text-sm text-gray-600 dark:text-gray-400">Dernière mise à jour : 9/10/2024</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Dernière mise à jour : 10/10/2024</p>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">© 2024 Curaconnect. Tous droits réservés.</p>
             </footer>
         </div>
