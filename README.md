@@ -76,4 +76,4 @@ Vous avez également la page contact dans laquelle vous pourrez renseigner vos c
 
 ## :memo: Licence
 
-Ce projet est affilié à la [license MIT](./LICENCE)
+Ce projet est affilié à la [licence MIT](./LICENSE)
